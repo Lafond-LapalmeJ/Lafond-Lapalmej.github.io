@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bioinformatics Platform</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="bioinformatics-platform">Bioinformatics Platform</h1>
+<ul>
+<li><a href="#bioinformatics-platform">Bioinformatics Platform</a>
+<ul>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#beluga">Beluga</a></li>
+<li><a href="#ngstools">ngs_tools</a></li>
+<li><a href="#vscode">vscode</a></li>
+<li><a href="#compute-canada-cloud">Compute Canada Cloud</a>
+<ul>
+<li><a href="#connect-to-the-cloud-via-terminal-with-user-tomcat">Connect to the cloud via terminal with user: tomcat</a></li>
+<li><a href="#renew-ssl-certificate">Renew SSL Certificate</a></li>
+<li><a href="#labkey">LabKey</a>
+<ul>
+<li><a href="#backup">Backup</a></li>
+<li><a href="#automatic-backup">Automatic Backup</a></li>
+<li><a href="#backup-recovery">Backup recovery</a></li>
+</ul>
+</li>
+<li><a href="#phenotips">Phenotips</a>
+<ul>
+<li><a href="#backup-1">Backup</a></li>
+<li><a href="#automatic-backup-1">Automatic Backup</a></li>
+<li><a href="#backup-recovery-1">Backup recovery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#muhc-server">MUHC server</a>
+<ul>
+<li><a href="#lxap56">lxap56</a></li>
+<li><a href="#lxvmap34">lxvmap34</a></li>
+<li><a href="#lxvmap35">lxvmap35</a></li>
+<li><a href="#labkey-1">LabKey</a></li>
+<li><a href="#phenotips-1">Phenotips</a></li>
+</ul>
+</li>
+<li><a href="#moodle">Moodle</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="faq">FAQ</h2>
+<p>Interested in workshop<br>
+:   We will have a second series ...</p>
+<h2 id="beluga">Beluga</h2>
+<h2 id="ngstools">ngs_tools</h2>
+<h2 id="vscode">vscode</h2>
+<h2 id="compute-canada-cloud">Compute Canada Cloud</h2>
+<h3 id="connect-to-the-cloud-via-terminal-with-user-tomcat">Connect to the cloud via terminal with user: tomcat</h3>
+<ul>
+<li>Open a terminal</li>
+<li>Login with ssh (Public and private key are in password folder)
+<code>ssh -i .key/bioinformaticsCloud.key centos@206.12.89.216</code></li>
+<li>Change user to tomcat (password for the user <code>tomcat</code> is in password folder)
+<code>sudo su - tomcat</code></li>
+</ul>
+<h3 id="renew-ssl-certificate">Renew SSL Certificate</h3>
+<ul>
+<li>Connect to the cloud with user tomcat (see above)</li>
+<li>Go to tomcat directory
+<code>cd /usr/local/tomcat</code></li>
+<li>Stop the tomcat server
+<code>/usr/local/tomcat/bin/shutdown.sh</code></li>
+<li>Renew the certificate (password for user <code>tomcat</code> is in password folder)
+<code>sudo /usr/local/bin/certbot-auto certonly --csr request.csr --standalone</code></li>
+<li>Push new certificate to the tomcat keystore (password for tomcat keystore is in password folder)
+<code>sudo keytool -import -trustcacerts -alias tomcat -file 0001_chain.pem -keystore .keystore</code></li>
+<li>Start the tomcat server
+<code>/usr/local/tomcat/bin/startup.sh</code></li>
+</ul>
+<h3 id="labkey">LabKey</h3>
+<h4 id="backup">Backup</h4>
+<h4 id="automatic-backup">Automatic Backup</h4>
+<h4 id="backup-recovery">Backup recovery</h4>
+<h3 id="phenotips">Phenotips</h3>
+<h4 id="backup-1">Backup</h4>
+<h4 id="automatic-backup-1">Automatic Backup</h4>
+<h4 id="backup-recovery-1">Backup recovery</h4>
+<h2 id="muhc-server">MUHC server</h2>
+<h3 id="lxap56">lxap56</h3>
+<h3 id="lxvmap34">lxvmap34</h3>
+<h3 id="lxvmap35">lxvmap35</h3>
+<h3 id="labkey-1">LabKey</h3>
+<h3 id="phenotips-1">Phenotips</h3>
+<h2 id="moodle">Moodle</h2>
+
+    </body>
+    </html>
