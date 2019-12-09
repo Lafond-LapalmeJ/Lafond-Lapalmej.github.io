@@ -3,23 +3,24 @@
   - [FAQ](#faq)
   - [Beluga](#beluga)
   - [ngs_tools](#ngstools)
-    - [test](#test)
   - [vscode](#vscode)
   - [Compute Canada Cloud](#compute-canada-cloud)
     - [Access the Cloud space on Arbutus](#access-the-cloud-space-on-arbutus)
     - [Connect to the cloud via terminal with user: tomcat](#connect-to-the-cloud-via-terminal-with-user-tomcat)
     - [Renew SSL Certificate](#renew-ssl-certificate)
     - [LabKey](#labkey)
-      - [Paths](#paths)
-      - [Startup and Shutdown](#startup-and-shutdown)
-      - [Backup](#backup)
-      - [Backup recovery](#backup-recovery)
+      - [LabKey paths](#labkey-paths)
+      - [LabKey Startup and Shutdown](#labkey-startup-and-shutdown)
+      - [LabKey backup](#labkey-backup)
+      - [LabKey recovery](#labkey-recovery)
     - [Phenotips](#phenotips)
-      - [Backup](#backup-1)
-      - [Automatic Backup](#automatic-backup)
-      - [Backup recovery](#backup-recovery-1)
+      - [PhenoTips Paths](#phenotips-paths)
+      - [PhenoTips Backup](#phenotips-backup)
+      - [PhenoTips Automatic Backup](#phenotips-automatic-backup)
+      - [PhenoTips recovery](#phenotips-recovery)
   - [MUHC server](#muhc-server)
     - [lxap56](#lxap56)
+      - [lxap56 paths](#lxap56-paths)
     - [lxvmap34](#lxvmap34)
     - [lxvmap35](#lxvmap35)
     - [LabKey](#labkey-1)
@@ -41,8 +42,6 @@ I also added you to our workshop mailing list. We will have some basic bioinform
 ## Beluga
 
 ## ngs_tools
-
-### test
 
 ## vscode
 
@@ -84,13 +83,17 @@ Documentation on how to use the cloud with Compute Canada:
 
 ### LabKey
 
-#### Paths
+#### LabKey paths
 
-- Path to tomcat folder: ``
-- Path to LabKey folder: ``
-- Path to LabKey database: ``
+- Path to tomcat folder: `/usr/local/tomcat`
+- Path to LabKey folder: `/usr/local/labkey`
+- Database
+  - Postgresql
+  - db name: labkey
+  - User: postgres
+  - password: *see password file*
 
-#### Startup and Shutdown
+#### LabKey Startup and Shutdown
 
 If LabKey is not working. First thing to do is connect to the cloud and restart the tomcat server
 ```
@@ -99,7 +102,7 @@ If LabKey is not working. First thing to do is connect to the cloud and restart 
 /usr/local/tomcat/bin/startup.sh
 ```
 
-#### Backup
+#### LabKey backup
 
 - Path to backup script (on cloud): `/home/centos/backup_labkey`
 - Path to backup repository (on cedar): `/project/6004488/resources/backup_labkey`
@@ -142,7 +145,7 @@ The backup process
   scp -i /home/centos/.ssh/labkeykey -r $BACKUPDIR $username@cedar.computecanada.ca:/project/6004488/resources/backup_labkey
   ```
 
-#### Backup recovery
+#### LabKey recovery
 
 Performing a backup recovery takes 2 steps
 
@@ -150,18 +153,52 @@ Performing a backup recovery takes 2 steps
 unpack the `tar.gz` file in /usr/local/labkey  
 `tar -xzvf labkey.tar.gz
 
-
 ### Phenotips
 
-#### Backup
+#### PhenoTips Paths
 
-#### Automatic Backup
+PhenoTips is working on the same tomcat instance than LabKey but have a different database (mysql)
 
-#### Backup recovery
+- Path to tomcat: `/usr/local/tomcat`
+- Path to phenotips folder: ``
+
+#### PhenoTips Backup
+
+See https://phenotips.org/Drafts/AdminGuide_Backups for backup documentation
+
+#### PhenoTips Automatic Backup
+
+The backup script is `/home/centos/backup_labkey/backup-phenotips-database.sh`
+
+This script is automatically run in the `backup_labkey.sh` script.
+
+#### PhenoTips recovery
+
+1. Shutdown tomcat
+2. Reset the database  
+   `mysql -p -u phenotips phenotips < ~/data180227_phenotips.sql`
+3. Startup tomcat
 
 ## MUHC server
 
 ### lxap56
+
+lxap56 is the server doing all NGS analysis on the MUHC network. Documentation on how to set up your user to run ngs_tools is on the README of ngs_tools: https://github.com/jbriviere/ngs_tools#how-to-use
+
+The server has 128G of RAM, 40 cores and 2 disks:
+
+- `/labgenet` 10TB slow performance disk
+- `/data` 240G high performance disk
+
+#### lxap56 paths
+
+- Path to MiSeq raw data: `/labgenet/data/miseq`
+- Path to MiSeq analysis: `/data/analysis/miseq`
+- Path to resources: `/labgenet/resources`
+- Path to bin: `/data/bin`
+- Path to ngs_tools (master branch): `/data/bin/ngs_tools`
+- Path to ngs_tools (develop branch): `/data/bin/dev_ngs_tools`
+- Path to backup for lxvmap34 and lxvmap35: `/labgenet/backup_labkey`
 
 ### lxvmap34
 
