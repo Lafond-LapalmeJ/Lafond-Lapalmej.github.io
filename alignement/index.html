@@ -1618,7 +1618,7 @@ HTMLWidgets.widget({
 
       // don't highlight the "not found" row, so we get the rows using the api
       if (table.rows({ filter: 'applied' }).data().length === 0) return;
-      // highlight gloal search keywords
+      // highlight global search keywords
       body.highlight($.trim(table.search()).split(/\s+/));
       // then highlight keywords from individual column filters
       if (filterRow) filterRow.each(function(i, td) {
@@ -1639,6 +1639,10 @@ HTMLWidgets.widget({
         // remove event handler
         table.off('draw.dt.dth column-visibility.dt.dth column-reorder.dt.dth');
       });
+
+      // Set the option for escaping regex characters in our search string.  This will be used
+      // for all future matching.
+      jQuery.fn.highlight.options.escapeRegex = (!options.search || !options.search.regex);
 
       // initial highlight for state saved conditions and initial states
       highlight();
@@ -1760,7 +1764,7 @@ HTMLWidgets.widget({
       if (event !== 'cell_edit' && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
         return;
       shinyData[id] = JSON.stringify(value);
-      if (HTMLWidgets.shinyMode) {
+      if (HTMLWidgets.shinyMode && Shiny.setInputValue) {
         Shiny.setInputValue(id, value, opts);
         if (!instance.clearInputs[id]) instance.clearInputs[id] = function() {
           Shiny.setInputValue(id, null);
@@ -2405,11 +2409,11 @@ padding-right: inherit;
 </head>
 <body style="background-color: white;">
 <div id="htmlwidget_container">
-<div id="htmlwidget-26a8e0f011ec4de66d12" class="datatables html-widget" style="width:960px;height:500px;">
+<div id="htmlwidget-5d25cc5bc78a613d8778" class="datatables html-widget" style="width:960px;height:500px;">
 
 </div>
 </div>
-<script type="application/json" data-for="htmlwidget-26a8e0f011ec4de66d12">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Evgeni Malkin","T.J. Oshie","James Neal","Derick Brassard","Max Pacioretty","Victor Hedman","Brayden Schenn","Nick Leddy","Calle Jarnkrok","Dougie Hamilton","Phillip Danault","Tyler Bertuzzi","Robby Fabbri","Mikko Rantanen","Logan Brown","Martin Necas","Cale Makar"],["19","31","32","28","32","25","31","23","28","30","30","31","23","13","15","26","29"],["26","22","20","17","26","27","25","11","19","28","23","25","13","18","6","16","28"],["10","10","10","10","10","10","10","9","10","10","10","10","10","4","9","6","10"],["17","8","5","4","6","11","7","5","7","6","8","5","8","6","3","2","10"],[7565158.3,5139667.99,4122222.22,3139815.57,5653524.6,5619659.83,6011691.24,3144214.65,3028393.54,4602642.25,4900000,5040006.83,2664961.09,8624480.33,2340000,3048049.25,4303193.24],["C","DR","HQ","C","GA","D","C","D","C","D","HQ","GA","GA","DR","HQ","DR","D"],["PIT","WAS","EDM","NYI","VGK","TBL","STL","NYI","NSH","CAR","MON","DET","DET","COL","VAN","CAR","COL"],[1.7,0.8,0.5,0.4,0.6,1.1,0.7,0.56,0.7,0.6,0.8,0.5,0.8,1.5,0.33,0.33,1],[15.3,8,5,4,6.6,12.1,7,5.56,7,6,8,5,8,16.5,3.33,3.33,11],[20.36,17.41,16.53,14.77,18.28,23,19.28,20.61,17.84,23.77,17.87,20.11,17.46,17.7,12.04,13.66,21.79],[1.84,1.28,0.99,1.04,0.87,1.61,0.95,1.45,1.9,1.07,1.34,0.81,2.46,1.43,1.17,0.9,1.91],["85.00","50.00","45.45","66.67","66.67","61.11","63.64","71.43","70.00","40.00","80.00","62.50","80.00","100.00","42.86","66.67","50.00"],["33","20","21","15","38","28","18","9","24","43","16","17","25","7","11","10","20"],[15.15,10,9.52,6.67,5.26,10.71,16.67,0,16.67,2.33,6.25,11.76,16,14.29,9.09,20,15],[67.36,65.23,75.56,50.03,51.61,66.68,68.03,42.42,38.67,64.11,15.46,59.41,57.3,50.78,43.05,33.89,67.63]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>name<\/th>\n      <th>pj<\/th>\n      <th>pts<\/th>\n      <th>pj10<\/th>\n      <th>pts10<\/th>\n      <th>caphit<\/th>\n      <th>pos<\/th>\n      <th>team<\/th>\n      <th>ppg<\/th>\n      <th>proj<\/th>\n      <th>TOIPG<\/th>\n      <th>pp100k<\/th>\n      <th>IPP.y<\/th>\n      <th>Shots.y<\/th>\n      <th>SH..y<\/th>\n      <th>ppshare<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"columnDefs":[{"className":"dt-right","targets":[6,9,10,11,12,15,16]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script>
-<script type="application/htmlwidget-sizing" data-for="htmlwidget-26a8e0f011ec4de66d12">{"viewer":{"width":450,"height":350,"padding":15,"fill":true},"browser":{"width":960,"height":500,"padding":40,"fill":false}}</script>
+<script type="application/json" data-for="htmlwidget-5d25cc5bc78a613d8778">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"],["Evgeni Malkin","T.J. Oshie","James Neal","Keith Yandle","Derick Brassard","Max Pacioretty","Victor Hedman","Brayden Schenn","Calle Jarnkrok","Dougie Hamilton","Phillip Danault","Tyler Bertuzzi","Anthony DeAngelo","Robby Fabbri","Mikko Rantanen","Logan Brown","Martin Necas"],["28","42","44","41","40","45","38","43","40","41","42","42","41","34","26","23","37"],["39","29","27","32","21","43","39","34","27","37","30","31","29","19","31","8","23"],["8","10","10","10","10","10","10","10","10","10","10","10","10","10","10","6","10"],["12","7","5","6","4","13","11","8","5","7","5","6","7","6","10","2","7"],[7565158.3,5139667.99,4122222.22,4881018.93,3139815.57,5653524.6,5619659.83,6011691.24,3028393.54,4602642.25,4900000,5040006.83,3371574.08,2664961.09,8624480.33,2340000,3048049.25],["C","DR","HQ","D","C","GA","D","C","C","D","HQ","GA","D","GA","DR","HQ","DR"],["PIT","WAS","EDM","FLA","NYI","VGK","TBL","STL","NSH","CAR","MON","DET","NYR","DET","COL","VAN","CAR"],[1.5,0.7,0.5,0.6,0.4,1.3,1.1,0.8,0.5,0.7,0.5,0.6,0.7,0.6,1,0.33,0.7],[31.5,13.3,10,13.2,8.8,26,25.3,18.4,11,14.7,11.5,13.8,15.4,13.8,20,7,14.7],[20.5,18.8,16.82,19.24,13.71,17.07,24.26,17.67,17.25,23.93,20.35,18.76,19.83,17.29,19.84,11.02,14.13],[1.63,1.12,0.99,1.01,1.04,1.89,1.61,1.09,1.35,1.25,0.84,0.98,1.7,1.85,0.95,1.17,1.88],["75.00","63.64","62.50","42.86","66.67","81.25","45.83","50.00","71.43","35.00","45.45","46.15","63.64","54.55","62.50","50.00","77.78"],["31","19","18","20","17","39","27","19","22","42","28","21","27","18","29","4","15"],[9.68,21.05,22.22,5,5.88,12.82,7.41,15.79,4.55,4.76,10.71,23.81,3.7,16.67,24.14,0,20],[68.05,64.26,49.46,63.89,48.74,42.86,73.61,69.69,49.35,73,47.77,53.51,56.92,59.39,72.57,28.67,30.88]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>name<\/th>\n      <th>pj<\/th>\n      <th>pts<\/th>\n      <th>pj10<\/th>\n      <th>pts10<\/th>\n      <th>caphit<\/th>\n      <th>pos<\/th>\n      <th>team<\/th>\n      <th>ppg<\/th>\n      <th>proj<\/th>\n      <th>TOIPG<\/th>\n      <th>pp100k<\/th>\n      <th>IPP.y<\/th>\n      <th>Shots.y<\/th>\n      <th>SH..y<\/th>\n      <th>ppshare<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":20,"columnDefs":[{"className":"dt-right","targets":[6,9,10,11,12,15,16]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[10,20,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<script type="application/htmlwidget-sizing" data-for="htmlwidget-5d25cc5bc78a613d8778">{"viewer":{"width":450,"height":350,"padding":15,"fill":true},"browser":{"width":960,"height":500,"padding":40,"fill":false}}</script>
 </body>
 </html>

@@ -2,11 +2,11 @@
     <html>
     <head>
         <meta charset="UTF-8">
-        <title>Bioinformatics Platform</title>
-        
+        <title>Bioinformatics Platform wiki</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
         <style>
 .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
 </style>
@@ -18,62 +18,214 @@
             }
         </style>
         
-        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
     </head>
     <body class="vscode-light">
-        <h1 id="bioinformatics-platform">Bioinformatics Platform</h1>
+        <h1 id="bioinformatics-platform-wiki">Bioinformatics Platform wiki</h1>
 <ul>
-<li><a href="#bioinformatics-platform">Bioinformatics Platform</a>
+<li><a href="#bioinformatics-platform-wiki">Bioinformatics Platform wiki</a>
 <ul>
 <li><a href="#faq">FAQ</a></li>
-<li><a href="#beluga">Beluga</a></li>
-<li><a href="#ngstools">ngs_tools</a></li>
-<li><a href="#vscode">vscode</a></li>
+<li><a href="#admin">Admin</a>
+<ul>
+<li><a href="#create-user-project-quote-invoice-on-labkey">Create User, project, quote, invoice on LabKey</a></li>
+<li><a href="#create-a-project-directory-on-beluga">Create a project directory on Beluga</a></li>
+<li><a href="#price-list">Price List</a></li>
+</ul>
+</li>
+<li><a href="#beluga">Beluga</a>
+<ul>
+<li><a href="#important-paths">Important paths</a></li>
+<li><a href="#shared-data-folder-procedure">Shared data folder procedure</a></li>
+</ul>
+</li>
+<li><a href="#ngstools">ngs_tools</a>
+<ul>
+<li><a href="#rules-to-follow">Rules to follow</a></li>
+</ul>
+</li>
+<li><a href="#vscode">vscode</a>
+<ul>
+<li><a href="#extensions-to-have">Extensions to have</a></li>
+</ul>
+</li>
 <li><a href="#compute-canada-cloud">Compute Canada Cloud</a>
 <ul>
+<li><a href="#access-the-cloud-space-on-arbutus">Access the Cloud space on Arbutus</a></li>
 <li><a href="#connect-to-the-cloud-via-terminal-with-user-tomcat">Connect to the cloud via terminal with user: tomcat</a></li>
 <li><a href="#renew-ssl-certificate">Renew SSL Certificate</a></li>
+<li><a href="#tomcat-server">Tomcat server</a></li>
 <li><a href="#labkey">LabKey</a>
 <ul>
-<li><a href="#backup">Backup</a></li>
-<li><a href="#automatic-backup">Automatic Backup</a></li>
-<li><a href="#backup-recovery">Backup recovery</a></li>
+<li><a href="#labkey-paths">LabKey paths</a></li>
+<li><a href="#labkey-startup-and-shutdown">LabKey Startup and Shutdown</a></li>
+<li><a href="#labkey-backup">LabKey backup</a></li>
+<li><a href="#labkey-recovery">LabKey recovery</a></li>
 </ul>
 </li>
 <li><a href="#phenotips">Phenotips</a>
 <ul>
-<li><a href="#backup-1">Backup</a></li>
-<li><a href="#automatic-backup-1">Automatic Backup</a></li>
-<li><a href="#backup-recovery-1">Backup recovery</a></li>
+<li><a href="#phenotips-paths">PhenoTips Paths</a></li>
+<li><a href="#phenotips-backup">PhenoTips Backup</a></li>
+<li><a href="#phenotips-automatic-backup">PhenoTips Automatic Backup</a></li>
+<li><a href="#phenotips-recovery">PhenoTips recovery</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li><a href="#muhc-server">MUHC server</a>
 <ul>
-<li><a href="#lxap56">lxap56</a></li>
-<li><a href="#lxvmap34">lxvmap34</a></li>
-<li><a href="#lxvmap35">lxvmap35</a></li>
-<li><a href="#labkey-1">LabKey</a></li>
-<li><a href="#phenotips-1">Phenotips</a></li>
+<li><a href="#lxap56">lxap56</a>
+<ul>
+<li><a href="#lxap56-paths">lxap56 paths</a></li>
+</ul>
+</li>
+<li><a href="#lxvmap34">lxvmap34</a>
+<ul>
+<li><a href="#connect-by-ssh-to-lxvmap34">Connect by ssh to lxvmap34</a></li>
+</ul>
+</li>
+<li><a href="#lxvmap35">lxvmap35</a>
+<ul>
+<li><a href="#connect-by-ssh-to-lxvmap34-1">Connect by ssh to lxvmap34</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#moodle">Moodle</a></li>
 </ul>
 </li>
 </ul>
+<hr>
 <h2 id="faq">FAQ</h2>
-<p>Interested in workshop<br>
-:   We will have a second series ...</p>
+<p><strong>I am interested in learning bioinformatics. Do you have any workshops, training or courses in bioinformatics?</strong><br>
+Here is the link to Calcul Quebec and MICM website. They have some workshops on Biofinformatics during the year.<br>
+<a href="http://www.calculquebec.ca/en/academic-research-services/training/">http://www.calculquebec.ca/en/academic-research-services/training/</a>
+<a href="https://mcgill.ca/micm/events">https://mcgill.ca/micm/events</a>
+<a href="http://micm.mcgill.ca/classes/">http://micm.mcgill.ca/classes/</a></p>
+<p>I also added you to our workshop mailing list. We will have some basic bioinformatics courses in 2020.</p>
+<hr>
+<h2 id="admin">Admin</h2>
+<h3 id="create-user-project-quote-invoice-on-labkey">Create User, project, quote, invoice on LabKey</h3>
+<p>First open the LabKey Platform project. <a href="https://206-12-89-216.cloud.computecanada.ca/labkey/Platform/project-begin.view?">Link</a></p>
+<ol>
+<li>If the user is not in the plaform_users list, Create a new user by clicking <code>insert new item</code> in the list menu.</li>
+<li>If the project is not in the Project list, Create a new project. <a href="https://206-12-89-216.cloud.computecanada.ca/labkey/Platform/wiki-page.view?name=new_project">link</a></li>
+<li>To create a quote, fill the information at this <a href="https://206-12-89-216.cloud.computecanada.ca/labkey/Platform/wiki-page.view?name=new_quote">link</a>. Press <code>refresh pdf</code> before saving to make sure the display of the pdf is OK.</li>
+<li>Each invoice is link to a quote. To create an invoice you have to make sure the 3 steps above are completed, then fill the information at this <a href="https://206-12-89-216.cloud.computecanada.ca/labkey/Platform/wiki-page.view?name=new_invoices">link</a>.</li>
+</ol>
+<h3 id="create-a-project-directory-on-beluga">Create a project directory on Beluga</h3>
+<p>See the script <code>new_project</code> at this location <code>/project/6033480/projects</code></p>
+<h3 id="price-list">Price List</h3>
+<table>
+<thead>
+<tr>
+<th>Analysis</th>
+<th style="text-align:right">Price</th>
+<th style="text-align:right">Price Floor</th>
+<th>Included</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whole Genome Sequencing</td>
+<td style="text-align:right">$50 per sample</td>
+<td style="text-align:right">$1000</td>
+<td>Reports and QCs for variants and CNV</td>
+</tr>
+<tr>
+<td>Whole Exome Sequencing</td>
+<td style="text-align:right">$30 per sample</td>
+<td style="text-align:right">$500</td>
+<td>Reports and QC for variants and CNV</td>
+</tr>
+<tr>
+<td>RNA-Seq Expression analysis Case/Control<sup>1</sup></td>
+<td style="text-align:right">$800</td>
+<td style="text-align:right">$800</td>
+<td>QCs, tables and figures for expression and pathway analysis</td>
+</tr>
+<tr>
+<td>Bioinformatics support</td>
+<td style="text-align:right">$55 per hour</td>
+<td style="text-align:right">$55</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><sup>1</sup> For RNA-Seq analysis other than Case/Control, please contact us for a quote.</p>
+<p>Contact us for any other services to plan a meeting and get the right price for the services you need.</p>
+<hr>
 <h2 id="beluga">Beluga</h2>
+<h3 id="important-paths">Important paths</h3>
+<ul>
+<li>ngs_tools production: <code>$BIN/ngs_tools</code></li>
+<li>ngs_tools development: <code>$BIN/ngs_tools_dev</code></li>
+<li>reference controls
+<ul>
+<li>cftr: <code>$RESOURCES/controls/cftr</code></li>
+<li>AmpliSeq: <code>$RESOURCES/controls/ampliseq</code></li>
+<li>exome (GIAB): <code>$RESOURCES/controls/giab</code></li>
+</ul>
+</li>
+<li>Shared directory: <code>/project/6033480/shared_data</code></li>
+</ul>
+<h3 id="shared-data-folder-procedure">Shared data folder procedure</h3>
+<p>The <code>shared_data</code> folder is to share data with compute canada user that are not from our group (def-jbriv). The procedure use the <code>setfacl</code> command to add supplemental permissions other that owner and group permission.</p>
+<p>1- In <code>shared_data</code>, create a directory based on the project name for the group/user you need to share data with like <code>ABC-001</code>.</p>
+<p>2- Copy the data to share into the directory.</p>
+<p>3- Change recursively the permissions for the group/user that need access.</p>
+<pre><code># for a group (like def-jbriv)
+setfacl -R -m g:def-jbriv:rx ABC-001
+
+# for a user
+setfacl -R -m u:lapalmej:rx ABC-001
+</code></pre>
+<hr>
+<p>This command will give read access to group def-jbriv and user lapalmej. You can always verify the permissions of a folder or a file with the command <code>getfacl ABC-001</code> or <code>getfacl ABC-001/file</code></p>
+<hr>
 <h2 id="ngstools">ngs_tools</h2>
+<h4 id="rules-to-follow">Rules to follow</h4>
+<ul>
+<li>Commit often</li>
+<li>Pull before starting to work</li>
+<li>Test your code before pushing</li>
+<li>Keep the README files up-to-date</li>
+<li>Master branch is for production</li>
+<li><em>Develop</em> branch is a <strong>stable</strong> development branch</li>
+<li>For non-minor changes, create a new <em>feature</em> branch, test it and then merge your <em>feature</em> branch to <em>develop</em>. This is the best approach to keep the <em>develop</em> branch stable</li>
+</ul>
+<hr>
 <h2 id="vscode">vscode</h2>
+<h3 id="extensions-to-have">Extensions to have</h3>
+<ul>
+<li>Python</li>
+<li>Remote - SSH</li>
+<li>Git Graph</li>
+<li>GitLens</li>
+<li>HTML Preview</li>
+<li>Markdown All in one</li>
+</ul>
 <h2 id="compute-canada-cloud">Compute Canada Cloud</h2>
+<p>Documentation on how to use the cloud with Compute Canada:<br>
+<code>https://docs.computecanada.ca/wiki/Cloud</code></p>
+<h3 id="access-the-cloud-space-on-arbutus">Access the Cloud space on Arbutus</h3>
+<ul>
+<li>In a web browser, go to <code>https://arbutus.cloud.computecanada.ca/</code></li>
+<li>Login with your compute canada credendials</li>
+<li>On this page you can:
+<ul>
+<li>create, modify the cloud specs</li>
+<li>Manage ssh key of the cloud</li>
+<li>Manage open/closed port of the cloud</li>
+</ul>
+</li>
+</ul>
 <h3 id="connect-to-the-cloud-via-terminal-with-user-tomcat">Connect to the cloud via terminal with user: tomcat</h3>
 <ul>
 <li>Open a terminal</li>
 <li>Login with ssh (Public and private key are in password folder)
-<code>ssh -i .key/bioinformaticsCloud.key centos@206.12.89.216</code></li>
+<code>ssh -i &lt;path_to_private_key&gt; centos@206.12.89.216</code></li>
 <li>Change user to tomcat (password for the user <code>tomcat</code> is in password folder)
 <code>sudo su - tomcat</code></li>
 </ul>
@@ -87,24 +239,166 @@
 <li>Renew the certificate (password for user <code>tomcat</code> is in password folder)
 <code>sudo /usr/local/bin/certbot-auto certonly --csr request.csr --standalone</code></li>
 <li>Push new certificate to the tomcat keystore (password for tomcat keystore is in password folder)
-<code>sudo keytool -import -trustcacerts -alias tomcat -file 0001_chain.pem -keystore .keystore</code></li>
+<code>sudo ../java/bin/keytool -import -trustcacerts -alias tomcat -file &lt;most_recent_chain.pem&gt; -keystore .keystore</code></li>
 <li>Start the tomcat server
 <code>/usr/local/tomcat/bin/startup.sh</code></li>
 </ul>
+<h3 id="tomcat-server">Tomcat server</h3>
+<p>Tomcat is the tool that run the LabKey and PhenoTips application. Here everything you need to know.</p>
+<ul>
+<li>Tomcat directory: <code>/usr/local/tomcat</code></li>
+<li>Tomcat server config: <code>/usr/local/tomcat/conf/server.xml</code></li>
+<li>Phenotips config: <code>/usr/local/tomcat/webapps/phenotips/WEB-INF</code></li>
+<li>Labkey config: <code>/usr/local/tomcat/conf/Catalina/localhost/labkey.xml</code></li>
+</ul>
 <h3 id="labkey">LabKey</h3>
-<h4 id="backup">Backup</h4>
-<h4 id="automatic-backup">Automatic Backup</h4>
-<h4 id="backup-recovery">Backup recovery</h4>
+<h4 id="labkey-paths">LabKey paths</h4>
+<ul>
+<li>Path to tomcat folder: <code>/usr/local/tomcat</code></li>
+<li>Path to LabKey folder: <code>/usr/local/labkey</code></li>
+<li>Labkey config: <code>/usr/local/tomcat/conf/Catalina/localhost/labkey.xml</code></li>
+<li>Database
+<ul>
+<li>Postgresql</li>
+<li>db name: labkey</li>
+<li>User: postgres</li>
+<li>password: <em>see password file</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="labkey-startup-and-shutdown">LabKey Startup and Shutdown</h4>
+<p>If LabKey is not working. First thing to do is connect to the cloud and restart the tomcat server</p>
+<pre><code><code><div>/usr/local/tomcat/bin/shutdown.sh
+# wait 10 seconds
+/usr/local/tomcat/bin/startup.sh
+</div></code></code></pre>
+<hr>
+<h4 id="labkey-backup">LabKey backup</h4>
+<ul>
+<li>Path to backup script (on cloud): <code>/home/centos/backup_labkey</code></li>
+<li>Path to backup repository (on cedar): <code>/project/6004488/resources/backup_labkey</code></li>
+</ul>
+<p>The backup process</p>
+<ul>
+<li>
+<p>Script to backup Labkey and Phenotips and then push the backup to Cedar: <code>/home/centos/backup_labkey/backup_labkey.sh</code></p>
+</li>
+<li>
+<p>Script to remove old backup on cedar (keep only the folder from the past 7 days): <code>/project/6004488/resources/.remove_old_backup</code></p>
+</li>
+<li>
+<p>Automatic backup<br>
+The backup process is triger everyday at midnight by a cron job that lunch the backup_labkey.sh script. to view the cron file: <code>sudo crontab -e</code></p>
+</li>
+<li>
+<p>Manual backup<br>
+Here is the procedure to do a manual backup</p>
+<pre><code><code><div># Get the date
+date=$(date '+%Y%m%d%H%M')
+
+# Create a new directory for the backup
+BACKUPDIR=/home/centos/backup_labkey/$date
+mkdir -p $BACKUPDIR
+
+# Go where the labkey and tomcat folder are located
+cd /usr/local
+
+# Create a tar archive of the labkey directory (excluding some large folders)
+tar --exclude labkey/files/data_sharing -zcvf $BACKUPDIR/labkey_${date}.tar.gz labkey
+
+# Create the database backup
+sudo -u postgres pg_dump -U postgres -c labkey &gt; $BACKUPDIR/labkey_${date}.sql
+
+## Next section is to push you backup directory to Cedar
+# put your CC username here
+username=lapalmej
+
+# Create the directory on Cedar
+ssh -i /home/centos/.ssh/labkeykey $username@cedar.computecanada.ca &quot;mkdir -p /project/6004488/resources/backup_labkey/${date}&quot;
+
+# Copy the directory on Cedar
+scp -i /home/centos/.ssh/labkeykey -r $BACKUPDIR $username@cedar.computecanada.ca:/project/6004488/resources/backup_labkey
+</div></code></code></pre>
+</li>
+</ul>
+<hr>
+<h4 id="labkey-recovery">LabKey recovery</h4>
+<p>Performing a backup recovery takes 2 steps</p>
+<p>1- Application recovery
+unpack the <code>tar.gz</code> file in /usr/local/labkey<br>
+`tar -xzvf labkey.tar.gz
+2- Replace the database</p>
+<pre><code><code><div>sudo su - postgres
+dropdb labkey
+createdb labkey
+psql -U postgres -d labkey -f labkey.sql
+</div></code></code></pre>
+<hr>
 <h3 id="phenotips">Phenotips</h3>
-<h4 id="backup-1">Backup</h4>
-<h4 id="automatic-backup-1">Automatic Backup</h4>
-<h4 id="backup-recovery-1">Backup recovery</h4>
+<h4 id="phenotips-paths">PhenoTips Paths</h4>
+<p>PhenoTips is working on the same tomcat instance than LabKey but have a different database (mysql)</p>
+<ul>
+<li>Path to tomcat: <code>/usr/local/tomcat</code></li>
+<li>Path to PhenoTips config in tomcat: <code>/usr/local/tomcat/</code></li>
+<li>Path to phenotips folder: <code>/var/lib/phenotips</code></li>
+<li>Phenotips config: <code>/usr/local/tomcat/webapps/phenotips/WEB-INF</code></li>
+</ul>
+<h4 id="phenotips-backup">PhenoTips Backup</h4>
+<p>See <a href="https://phenotips.org/Drafts/AdminGuide_Backups">https://phenotips.org/Drafts/AdminGuide_Backups</a> for backup documentation</p>
+<h4 id="phenotips-automatic-backup">PhenoTips Automatic Backup</h4>
+<p>The backup script is <code>/home/centos/backup_labkey/backup-phenotips-database.sh</code></p>
+<p>This script is automatically run in the <code>backup_labkey.sh</code> script.</p>
+<h4 id="phenotips-recovery">PhenoTips recovery</h4>
+<ol>
+<li>Shutdown tomcat</li>
+<li>Reset the database<br>
+<code>mysql -p -u phenotips phenotips &lt; ~/data180227_phenotips.sql</code></li>
+<li>Startup tomcat</li>
+</ol>
 <h2 id="muhc-server">MUHC server</h2>
 <h3 id="lxap56">lxap56</h3>
+<p>lxap56 is the server doing all NGS analysis on the MUHC network. Documentation on how to set up your user to run ngs_tools is on the README of ngs_tools: <a href="https://github.com/jbriviere/ngs_tools#how-to-use">https://github.com/jbriviere/ngs_tools#how-to-use</a></p>
+<p>The server has 128G of RAM, 40 cores and 2 disks:</p>
+<ul>
+<li><code>/labgenet</code> 10TB slow performance disk</li>
+<li><code>/data</code> 240G high performance disk</li>
+</ul>
+<h4 id="lxap56-paths">lxap56 paths</h4>
+<ul>
+<li>Path to MiSeq raw data: <code>/labgenet/data/miseq</code></li>
+<li>Path to MiSeq analysis: <code>/data/analysis/miseq</code></li>
+<li>Path to resources: <code>/labgenet/resources</code></li>
+<li>Path to bin: <code>/data/bin</code></li>
+<li>Path to ngs_tools (master branch): <code>/data/bin/ngs_tools</code></li>
+<li>Path to ngs_tools (develop branch): <code>/data/bin/ngs_tools_dev</code></li>
+<li>Path to backup for lxvmap34 and lxvmap35: <code>/labgenet/backup_labkey</code></li>
+</ul>
 <h3 id="lxvmap34">lxvmap34</h3>
+<p>lxvmap34 is the virtual machine(VM) on the MUHC network. The VM is used for the LabKey of the Clinical Lab of the MUHC.</p>
+<ul>
+<li>Database
+<ul>
+<li>Postgresql</li>
+<li>db name: labkey</li>
+<li>User: postgres</li>
+<li>password: <em>see password file</em></li>
+</ul>
+</li>
+</ul>
+<h4 id="connect-by-ssh-to-lxvmap34">Connect by ssh to lxvmap34</h4>
+<p>The password for the user <strong>integrator</strong> is in the password file.</p>
+<pre><code><code><div># You need to be on the MUHC network to access the VM
+ssh integrator@lxvmap34
+</div></code></code></pre>
+<hr>
+<p>The LabKey is install with the same structure as the Compute Canada cloud. you can refer to the above sections for the documentation.</p>
 <h3 id="lxvmap35">lxvmap35</h3>
-<h3 id="labkey-1">LabKey</h3>
-<h3 id="phenotips-1">Phenotips</h3>
+<h4 id="connect-by-ssh-to-lxvmap34-1">Connect by ssh to lxvmap34</h4>
+<p>The password for the user <strong>integrator</strong> is in the password file.</p>
+<pre><code><code><div># You need to be on the MUHC network to access the VM
+ssh integrator@lxvmap34
+</div></code></code></pre>
+<hr>
 <h2 id="moodle">Moodle</h2>
 
     </body>
